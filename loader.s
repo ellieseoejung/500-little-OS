@@ -19,6 +19,14 @@ extern kmain
     .loop:
         jmp .loop                   ; loop forever
 
+    global output
+
+    output:
+	mov al,[esp + 8]
+	mov dx, [esp+4]
+	out dx,al
+	ret
+
     KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
 
     section .bss
