@@ -1,8 +1,3 @@
-void kmain()
-{
-
-}
-
 #define BLACK 0
 #define BLUE 1
 #define GREEN 2
@@ -20,6 +15,7 @@ void kmain()
 #define LBROWN 14
 #define WHITE 15
 
+
     /** fb_write_cell:
      *  Writes a character with the given foreground and background to position i
      *  in the framebuffer.
@@ -31,6 +27,13 @@ void kmain()
      */
     void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
     {
+	char *fb = (char *) 0x000B8000;
         fb[i] = c;
-        fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F)
+        fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
     }
+
+void kmain()
+{
+	fb_write_cell(0,'H',WHITE,BLACK);
+	fb_write_cell(2,'i',WHITE,BLACK);
+}
