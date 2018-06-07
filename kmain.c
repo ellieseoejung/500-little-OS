@@ -1,4 +1,5 @@
 #include "io.h"
+#include "serial.h"
 
 #define BLACK 0
 #define BLUE 1
@@ -50,12 +51,15 @@ char *li = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesqu
 
 void kmain()
 {
+	serial_configure();
 	while (1)
 	{
 		for (int pos = 0;pos < 80*25;pos++)
 		{
 			fb_write_cell(pos*2,'*',WHITE,BLACK);
 			fb_move_cursor(pos);
+			if (pos == 1)
+				serial_putc('-');
 		}
 	}
 }

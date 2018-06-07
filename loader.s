@@ -20,11 +20,17 @@ extern kmain
         jmp .loop                   ; loop forever
 
     global output
+    global input
 
     output:
 	mov al,[esp + 8]
 	mov dx, [esp+4]
 	out dx,al
+	ret
+
+    input:
+	mov dx, [esp + 4]
+	in al, dx
 	ret
 
     KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes

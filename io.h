@@ -17,5 +17,6 @@
 
 
     void output(unsigned short port, unsigned char data);
+    unsigned char input (unsigned int port);
 
     #endif /* INCLUDE_IO_H */
